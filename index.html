@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html onclick="focusInput()">
+	<head>
+		<title>Console</title>
+		<link rel="stylesheet" href="stylesheet.css">
+		<script src="script.js"></script>
+	</head>
+	<body onload="init()">
+		<div id="output"></div>
+		<p id="prompt"></p>
+		<input type="text" id="input" autocomplete="off" onkeypress="handleInput(event)">
+	</body>
+</html>
