@@ -1,11 +1,23 @@
-const prompt = "cmd> ";
+var prompt;
+var currentDirectory;
 //var commandHistory = [];
 //var currentCommand = 0;
 
 //is called when the page loads
 function init() {
-	printString("Welcome");
-	document.getElementById("prompt").innerHTML = prompt;
+	currentDirectory = new Directory("index");
+	currentDirectory.addFile("https://github.com/Diefonk", "Diefonk.git");
+	var trash = new Directory("trash");
+	trash.addFile("https://diefonk.itch.io/pizza-dress-up", "Pizza.js");
+	trash.addFile("https://www.youtube.com/watch?v=zwTw--dh9jM", "Potato.mp4");
+	var newFolder = new Directory("New Folder");
+	trash.addDirectory(newFolder);
+	trash.makeList();
+	currentDirectory.addDirectory(trash);
+	currentDirectory.makeList();
+
+	print("Welcome to this console website\nType 'help' for a list of commands");
+	setPrompt();
 	focusInput();
 }
 
@@ -15,28 +27,54 @@ function handleInput(aEvent) {
 		aEvent.preventDefault();
 		//commandHistory.push(document.getElementById("input").value);
 		//currentCommand = commandHistory.length + 1;
-		printString(prompt + document.getElementById("input").value);
+		print(prompt + document.getElementById("input").value);
 		const input = document.getElementById("input").value.toLowerCase();
-		if (input === "printstring") {
-			printString("This prints a string onto one line");
-		} else if (input === "printarray") {
-			printArray(["This prints", "an array", "of strings"]);
-		} else if (input === "printrandom") {
-			printRandom(["This prints", "a random string", "from an array"]);
-		} else if (input === "printlines") {
-			printLines("This prints\na string\nwith support for\nnewline characters");
+		if (input === "help") {
+			print("cd - changes directory to specified directory");
+			print("ls - lists directories and files in current directory");
+			print("open - opens the specified file");
+			print("clear - clears the console");
+			print("help - returns this list");
+		} else if (input.substring(0, 3) === "cd " || input === "cd") {
+			if (input.length < 4) {
+				print("No directory specified");
+			} else {
+				const path = input.substring(3, input.length);
+				var newDirectory = currentDirectory.getDirectory(path);
+				if (newDirectory !== null) {
+					currentDirectory = newDirectory;
+					setPrompt();
+				} else {
+					print(path + ": No such directory");
+				}
+			}
+		} else if (input === "ls") {
+			print(currentDirectory.getList());
+		} else if (input.substring(0, 5) === "open " || input === "open") {
+			if (input.length < 6) {
+				print("No file specified");
+			} else {
+				const name = input.substring(5, input.length);
+				var file = currentDirectory.getFile(name);
+				if (typeof(file) === "string") {
+					window.open(file, "_blank");
+				} else {
+					print(name + ": No such file");
+				}
+			}
 		} else if (input === "clear") {
 			location.reload();
 		} else if (input === "xyzzy") {
-			printString("Nothing happens");
+			print("Nothing happens");
 		} else if (input === "") {
 			//do nothing
 		} else {
-			printString("Command not found");
+			print("Command not found\nType 'help' for a list of commands");
 		}
 		document.getElementById("input").value = "";
 		window.scrollTo(0, document.body.scrollHeight);
-	} else if (aEvent.keyCode === 38) {
+	}
+	/*else if (aEvent.keyCode === 38) {
 		printString("up");
 	} else if (aEvent.keyCode === 40) {
 		printString("down");
@@ -67,6 +105,42 @@ function handleInput(aEvent) {
 	//TODO history by pressing arrow keys
 }
 
+//prints a string and makes sure newline characters are handled correctly
+function print(aString) {
+	var output = document.createElement("p");
+	var text;
+	var newlineIndex = aString.indexOf("\n");
+	while (newlineIndex >= 0) {
+		text = document.createTextNode(aString.substring(0, newlineIndex));
+		output.appendChild(text);
+		var newline = document.createElement("br");
+		output.appendChild(newline);
+		aString = aString.substring(newlineIndex + 1, aString.length);
+		newlineIndex = aString.indexOf("\n");
+	}
+	text = document.createTextNode(aString);
+	output.appendChild(text);
+	document.getElementById("output").appendChild(output);
+}
+
+//gets a random number in the range [0, aMax)
+function random(aMax) {
+	return Math.floor(Math.random() * aMax);
+}
+
+//gives focus to the input field
+function focusInput() {
+	document.getElementById("input").focus();
+}
+
+//sets the prompt to show the current directory
+function setPrompt() {
+	prompt = "guest:" + currentDirectory.getName() + "$ ";
+	document.getElementById("prompt").innerHTML = prompt;
+}
+
+//old functions, not recommended
+
 //prints a string onto one line
 function printString(aString) {
 	var output = document.createElement("p");
@@ -91,32 +165,6 @@ function printArray(aArray) {
 
 //prints a random string from an array
 function printRandom(aArray) {
-	var index = Math.floor(Math.random() * aArray.length);
-	var output = document.createElement("p");
-	var text = document.createTextNode(aArray[index]);
-	output.appendChild(text);
-	document.getElementById("output").appendChild(output);
-}
-
-//prints a string on multiple lines if there are newline characters
-function printLines(aString) {
-	var output = document.createElement("p");
-	var text;
-	var newlineIndex = aString.indexOf("\n");
-	while (newlineIndex >= 0) {
-		text = document.createTextNode(aString.substring(0, newlineIndex));
-		output.appendChild(text);
-		var newline = document.createElement("br");
-		output.appendChild(newline);
-		aString = aString.substring(newlineIndex + 1, aString.length);
-		newlineIndex = aString.indexOf("\n");
-	}
-	text = document.createTextNode(aString);
-	output.appendChild(text);
-	document.getElementById("output").appendChild(output);
-}
-
-//gives focus to the input field
-function focusInput() {
-	document.getElementById("input").focus();
+	var index = random(aArray.length);
+	printString(aArray[index]);
 }
