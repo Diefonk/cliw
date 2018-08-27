@@ -1,18 +1,18 @@
 var prompt;
 var currentDirectory;
-//var commandHistory = [];
-//var currentCommand = 0;
 
 //is called when the page loads
 function init() {
-	currentDirectory = new Directory("index");
-	currentDirectory.addFile("https://github.com/Diefonk", "Diefonk.git");
+	var newFolder = new Directory("New Folder");
+
 	var trash = new Directory("trash");
 	trash.addFile("https://diefonk.itch.io/pizza-dress-up", "Pizza.js");
 	trash.addFile("https://www.youtube.com/watch?v=zwTw--dh9jM", "Potato.mp4");
-	var newFolder = new Directory("New Folder");
 	trash.addDirectory(newFolder);
 	trash.makeList();
+
+	currentDirectory = new Directory("index");
+	currentDirectory.addFile("https://github.com/Diefonk", "Diefonk.git");
 	currentDirectory.addDirectory(trash);
 	currentDirectory.makeList();
 
@@ -25,10 +25,11 @@ function init() {
 function handleInput(aEvent) {
 	if (aEvent.keyCode === 13) {
 		aEvent.preventDefault();
-		//commandHistory.push(document.getElementById("input").value);
-		//currentCommand = commandHistory.length + 1;
+		
 		print(prompt + document.getElementById("input").value);
 		const input = document.getElementById("input").value.toLowerCase();
+		document.getElementById("input").value = "";
+
 		if (input === "help") {
 			print("cd - changes directory to specified directory");
 			print("ls - lists directories and files in current directory");
@@ -71,38 +72,8 @@ function handleInput(aEvent) {
 		} else {
 			print("Command not found\nType 'help' for a list of commands");
 		}
-		document.getElementById("input").value = "";
 		window.scrollTo(0, document.body.scrollHeight);
 	}
-	/*else if (aEvent.keyCode === 38) {
-		printString("up");
-	} else if (aEvent.keyCode === 40) {
-		printString("down");
-	}
-	/*else if (aEvent.keyCode === 38) {
-		aEvent.preventDefault();
-		if (currentCommand === commandHistory.length + 1) {
-			commandHistory.push(document.getElementById("input").value);
-			currentCommand--;
-		}
-		currentCommand--;
-		if (currentCommand < 0) {
-			currentCommand = 0;
-		}
-		document.getElementById("input").value = commandHistory[currentCommand];
-	}
-	else if (aEvent.keyCode === 40) {
-		aEvent.preventDefault();
-		currentCommand++;
-		if (currentCommand === commandHistory.length) {
-			currentCommand = commandHistory.length - 1;
-		} else if (currentCommand > commandHistory.length) {
-			currentCommand = commandHistory.length + 1;
-			return;
-		}
-		document.getElementById("input").value = commandHistory[currentCommand];
-	}*/
-	//TODO history by pressing arrow keys
 }
 
 //prints a string and makes sure newline characters are handled correctly
