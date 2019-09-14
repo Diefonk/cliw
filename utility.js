@@ -78,4 +78,5 @@ function focusInput() {
 function setPrompt() {
 	prompt = "guest:" + currentDirectory.getName() + "$ ";
 	io.prompt.innerHTML = prompt;
+	io.input.style.width = (document.body.offsetWidth - io.prompt.offsetWidth * 1.2) + "px";
 }

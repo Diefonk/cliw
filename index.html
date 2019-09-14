@@ -2,12 +2,13 @@
 <html onclick="focusInput()">
 	<head>
 		<title>Console</title>
-		<link rel="stylesheet" href="stylesheet.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="style.css">
 		<script src="Directory.js"></script>
 		<script src="utility.js"></script>
 		<script src="script.js"></script>
 	</head>
-	<body onload="init()">
+	<body onload="init()" onresize="setPrompt()">
 		<div id="output"></div>
 		<p id="prompt"></p>
 		<input type="text" id="input" autocomplete="off" spellcheck="false" onkeypress="handleInput(event)">
