@@ -16,7 +16,7 @@ currentDirectory.addDirectory(trash);
 currentDirectory.makeList();
 
 //creating commands
-createCommand("cd", "changes directory to specified directory", aInput => {
+createArgumentCommand("cd", "changes directory to specified directory", aInput => {
 	if (aInput.length < 4) {
 		print("No directory specified");
 	} else {
@@ -29,20 +29,15 @@ createCommand("cd", "changes directory to specified directory", aInput => {
 			print(path + ": No such directory");
 		}
 	}
-	return true;
 });
 
 createCommand("ls", "lists directories and files in current directory", aInput => {
-	if (aInput !== "ls" && aInput !== "dir") {
-		return false;
-	}
 	print(currentDirectory.getList());
-	return true;
 });
 
 createCommand("dir", null, commands.ls);
 
-createCommand("open", "opens the specified file", aInput => {
+createArgumentCommand("open", "opens the specified file", aInput => {
 	if (aInput.length < 6) {
 		print("No file specified");
 	} else {
@@ -54,31 +49,18 @@ createCommand("open", "opens the specified file", aInput => {
 			print(name + ": No such file");
 		}
 	}
-	return true;
 });
 
 createCommand("clear", "clears the console", aInput => {
-	if (aInput !== "clear") {
-		return false;
-	}
 	location.reload();
-	return true;
 });
 
 createCommand("xyzzy", null, aInput => {
-	if (aInput !== "xyzzy") {
-		return false;
-	}
 	print("Nothing happens");
-	return true;
 });
 
 createCommand("help", "returns this list", aInput => {
-	if (aInput !== "help") {
-		return false;
-	}
 	for (let index = 0; index < commandList.length; index++) {
 		print(commandList[index]);
 	}
-	return true;
 });
