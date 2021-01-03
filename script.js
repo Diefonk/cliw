@@ -31,7 +31,7 @@ createArgumentCommand("cd", "changes directory to specified directory", aInput =
 	}
 });
 
-createCommand("ls", "lists directories and files in current directory", aInput => {
+createCommand("ls", "lists directories and files in current directory", () => {
 	print(currentDirectory.getList());
 });
 
@@ -51,15 +51,15 @@ createArgumentCommand("open", "opens the specified file", aInput => {
 	}
 });
 
-createCommand("clear", "clears the console", aInput => {
+createCommand("clear", "clears the console", () => {
 	location.reload();
 });
 
-createCommand("xyzzy", null, aInput => {
+createCommand("xyzzy", null, () => {
 	print("Nothing happens");
 });
 
-createCommand("help", "returns this list", aInput => {
+createCommand("help", "returns this list", () => {
 	for (let index = 0; index < commandList.length; index++) {
 		print(commandList[index]);
 	}
