@@ -1,17 +1,17 @@
 body {
-	background-color: #000000;
+	background-color: #000;
 	padding: 0.5em;
 }
 p, input {
 	font-family: monospace;
 	font-size: 1.5em;
-	color: #00ff00;
+	color: #0f0;
 }
 input, #prompt {
 	display: inline;
 }
 input {
-	background-color: #000000;
+	background-color: #000;
 }
 * {
 	margin: 0;
@@ -19,4 +19,12 @@ input {
 	border-collapse: collapse;
 	border: none;
 	outline: none;
+}
+@media (prefers-color-scheme: light) {
+	body, input {
+		background-color: #fff;
+	}
+	p, input {
+		color: #000;
+	}
 }
