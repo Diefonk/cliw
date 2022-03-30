@@ -11,6 +11,7 @@ games.addFile("https://diefonk.itch.io/concern", "growingconcern.cs");
 games.addFile("https://diefonk.itch.io/recycle", "recycleecho.cs");
 games.addFile("https://diefonk.itch.io/you-reached-avalon", "youreachedavalon.gd");
 games.addFile("https://diefonk.itch.io/grim-folly", "grimfolly.js");
+games.addFile("https://diefonk.itch.io/the-bagel-archive", "thebagelarchive.pdx");
 games.makeList();
 
 var other = new Directory("other");
