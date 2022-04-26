@@ -21,6 +21,7 @@ other.addFile("https://github.com/Diefonk/cliw", "cliw.js");
 other.addFile("https://epithet.glitch.me", "epithet.html");
 other.addFile("/hsrewind", "hsrewind.js");
 other.addFile("/jadestuck", "jadestuck.html");
+other.addFile("https://diefonk.itch.io/pocket-reader", "pocketreader.pdx");
 other.makeList();
 
 var lists = new Directory("lists");
