@@ -23,6 +23,7 @@ other.addFile("/hsrewind", "hsrewind.js");
 other.addFile("/jadestuck", "jadestuck.html");
 other.addFile("https://diefonk.itch.io/pocket-reader", "pocketreader.pdx");
 other.addFile("https://diefonk.itch.io/satellite", "satellite.pdx");
+other.addFile("https://availa.blue", "availa.blue.html");
 other.makeList();
 
 var lists = new Directory("lists");
