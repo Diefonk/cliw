@@ -45,6 +45,7 @@ currentDirectory.addFile("https://diefonk.itch.io", "itch.io.url");
 currentDirectory.addFile("https://github.com/Diefonk", "github.url");
 currentDirectory.addFile("https://soundcloud.com/diefonk", "soundcloud.url");
 currentDirectory.addFile("/rss.xml", "rss.xml");
+currentDirectory.addFile("https://www.patreon.com/diefonk", "patreon.url");
 currentDirectory.addDirectory(games);
 currentDirectory.addDirectory(other);
 currentDirectory.addDirectory(lists);
