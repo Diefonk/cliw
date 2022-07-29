@@ -12,6 +12,7 @@ games.addFile("https://diefonk.itch.io/recycle", "recycleecho.cs");
 games.addFile("https://diefonk.itch.io/you-reached-avalon", "youreachedavalon.gd");
 games.addFile("https://diefonk.itch.io/grim-folly", "grimfolly.js");
 games.addFile("https://diefonk.itch.io/the-bagel-archive", "thebagelarchive.pdx");
+games.addFile("https://diefonk.itch.io/i-was-reincarnated-in-an-rpg-but-i-dont-want-to-fight-the-monsters", "smudge.gd");
 games.makeList();
 
 var other = new Directory("other");
