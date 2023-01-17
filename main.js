@@ -5,18 +5,13 @@ const welcomeMessage = "Welcome to diefonk.net\nType 'help' for a list of comman
 var games = new Directory("games");
 games.addFile("https://diefonk.itch.io/pizza-dress-up", "pizzadressup.js");
 games.addFile("https://diefonk.itch.io/potato-simulator-2014-remix", "potatosimulator2014remix.js");
-games.addFile("https://diefonk.itch.io/9in1", "9in1.js");
-games.addFile("https://diefonk.itch.io/beast-city-dreamers", "beastcitydreamers.bitsy");
 games.addFile("https://diefonk.itch.io/concern", "growingconcern.cs");
-games.addFile("https://diefonk.itch.io/recycle", "recycleecho.cs");
 games.addFile("https://diefonk.itch.io/you-reached-avalon", "youreachedavalon.gd");
 games.addFile("https://diefonk.itch.io/grim-folly", "grimfolly.js");
-games.addFile("https://diefonk.itch.io/the-bagel-archive", "thebagelarchive.pdx");
 games.addFile("https://diefonk.itch.io/i-was-reincarnated-in-an-rpg-but-i-dont-want-to-fight-the-monsters", "smudge.gd");
 games.makeList();
 
 var other = new Directory("other");
-other.addFile("https://github.com/Diefonk/processing-projects", "processingprojects.pde");
 other.addFile("https://github.com/Diefonk/baebot", "baebot.js");
 other.addFile("https://github.com/Diefonk/cliw", "cliw.js");
 other.addFile("https://epithet.glitch.me", "epithet.html");
@@ -24,32 +19,23 @@ other.addFile("/hsrewind", "hsrewind.js");
 other.addFile("/jadestuck", "jadestuck.html");
 other.addFile("https://diefonk.itch.io/pocket-reader", "pocketreader.pdx");
 other.addFile("https://diefonk.itch.io/satellite", "satellite.pdx");
-other.addFile("https://availa.blue", "availa.blue.html");
+other.addFile("/images", "images.png");
 other.makeList();
 
-var lists = new Directory("lists");
-lists.addFile("https://www.imdb.com/list/ls090150004/", "movies.imdb");
-lists.addFile("https://www.imdb.com/list/ls081594137/", "series.imdb");
-lists.addFile("https://myanimelist.net/animelist/Diefonk", "anime.mal");
-lists.addFile("https://myanimelist.net/mangalist/Diefonk", "manga.mal");
-lists.addFile("https://www.goodreads.com/review/list/120037719?shelf=read", "books+comics.gr");
-lists.addFile("https://itch.io/c/846223/have-playedread", "games+stories.itch.io");
-lists.addFile("https://steamcommunity.com/id/diefonk/games/", "games.steam");
-lists.addFile("https://archiveofourown.org/users/Diefonk/bookmarks", "fanfiction.ao3");
-lists.makeList();
+var profiles = new Directory("profiles");
+profiles.addFile("https://twitter.com/Diefonk", "twitter.url");
+profiles.addFile("https://www.youtube.com/user/Diefonk", "youtube.url");
+profiles.addFile("https://diefonk.tumblr.com", "tumblr.url");
+profiles.addFile("https://diefonk.itch.io", "itch.io.url");
+profiles.addFile("https://github.com/Diefonk", "github.url");
+profiles.addFile("https://soundcloud.com/diefonk", "soundcloud.url");
+profiles.makeList();
 
 currentDirectory = new Directory("index");
-currentDirectory.addFile("https://twitter.com/Diefonk", "twitter.url");
-currentDirectory.addFile("https://www.youtube.com/user/Diefonk", "youtube.url");
-currentDirectory.addFile("https://blog.diefonk.net", "tumblr.url");
-currentDirectory.addFile("https://diefonk.itch.io", "itch.io.url");
-currentDirectory.addFile("https://github.com/Diefonk", "github.url");
-currentDirectory.addFile("https://soundcloud.com/diefonk", "soundcloud.url");
 currentDirectory.addFile("/rss.xml", "rss.xml");
-currentDirectory.addFile("https://www.patreon.com/diefonk", "patreon.url");
 currentDirectory.addDirectory(games);
 currentDirectory.addDirectory(other);
-currentDirectory.addDirectory(lists);
+currentDirectory.addDirectory(profiles);
 currentDirectory.makeList();
 
 //creating commands
