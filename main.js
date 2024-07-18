@@ -41,7 +41,7 @@ currentDirectory.makeList();
 //creating commands
 createArgumentCommand("cd", "changes directory to specified directory", aInput => {
 	if (aInput.length < 4) {
-		print("No directory specified");
+		io.print("No directory specified");
 	} else {
 		const path = aInput.substring(3, aInput.length);
 		var newDirectory = currentDirectory.getDirectory(path);
@@ -49,27 +49,27 @@ createArgumentCommand("cd", "changes directory to specified directory", aInput =
 			currentDirectory = newDirectory;
 			setPrompt();
 		} else {
-			print(path + ": No such directory");
+			io.print(path + ": No such directory");
 		}
 	}
 });
 
 createCommand("ls", "lists directories and files in current directory", () => {
-	print(currentDirectory.getList());
+	io.print(currentDirectory.getList());
 });
 
 createCommand("dir", null, commands.ls);
 
 createArgumentCommand("open", "opens the specified file", aInput => {
 	if (aInput.length < 6) {
-		print("No file specified");
+		io.print("No file specified");
 	} else {
 		const name = aInput.substring(5, aInput.length);
 		var file = currentDirectory.getFile(name);
 		if (typeof(file) === "string") {
 			window.open(file, "_blank");
 		} else {
-			print(name + ": No such file");
+			io.print(name + ": No such file");
 		}
 	}
 });
@@ -79,27 +79,27 @@ createCommand("clear", "clears the console", () => {
 });
 
 createCommand("xyzzy", null, () => {
-	print("Nothing happens");
+	io.print("Nothing happens");
 });
 
 createCommand("make me a sandwich", null, () => {
-	print("What? Make it yourself.");
+	io.print("What? Make it yourself.");
 });
 
 createCommand("sudo make me a sandwich", null, () => {
-	print("Okay.");
+	io.print("Okay.");
 });
 
 createCommand("send nudes", null, () => {
-	print("No.");
+	io.print("No.");
 });
 
 createCommand("send noots", null, () => {
-	print("NOOT NOOT");
+	io.print("NOOT NOOT");
 });
 
 createCommand("help", "returns this list", () => {
 	for (let index = 0; index < commandList.length; index++) {
-		print(commandList[index]);
+		io.print(commandList[index]);
 	}
 });

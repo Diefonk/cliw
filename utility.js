@@ -10,7 +10,7 @@ function init() {
 	io.input = document.getElementById("input");
 	io.output = document.getElementById("output");
 	io.prompt = document.getElementById("prompt");
-	print(welcomeMessage);
+	io.print(welcomeMessage);
 	setPrompt();
 	focusInput();
 }
@@ -20,7 +20,7 @@ function handleInput(aEvent) {
 	if (aEvent.keyCode === 13) {
 		aEvent.preventDefault();
 
-		print(prompt + io.input.value);
+		io.print(prompt + io.input.value);
 		const input = io.input.value.toLowerCase();
 		io.input.value = "";
 
@@ -36,7 +36,7 @@ function handleInput(aEvent) {
 				if (command in argumentCommands) {
 					argumentCommands[command](input);
 				} else {
-					print("Command not found\nType 'help' for a list of commands");
+					io.print("Command not found\nType 'help' for a list of commands");
 				}
 			}
 		}
@@ -62,7 +62,7 @@ function createArgumentCommand(aName, aDescription, aFunction) {
 }
 
 //prints a string and makes sure newline characters are handled correctly
-function print(aString) {
+io.print = function(aString) {
 	var output = document.createElement("p");
 	var text;
 	var newlineIndex = aString.indexOf("\n");
